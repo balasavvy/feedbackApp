@@ -1,0 +1,89 @@
+<div [formGroup]="form" id="former">
+    <label [attr.for]="question.fieldName">{{index}}.  {{question.label}}</label>
+  
+    <div [ngSwitch]="question.controlType">
+        <div class="form-group">
+          
+      <input class="form-control" *ngSwitchCase ="'textbox'" [formControlName]="question.fieldName"
+              [id]="question.fieldName" [type]="question.fieldType" [required]="question.isOptional">
+              </div>
+        <div class="form-group" *ngSwitchCase ="'dropdown'">   
+          <select class="form-control"  [id]="question.fieldName" [required]="question.isOptional"  [formControlName]="question.fieldName">
+              <option [value]="question.value">Select</option>
+             <option *ngFor="let opt of question.values" [value]="opt.value">{{opt.value}}</option>
+          </select>
+
+        </div>
+    <div class="form-group" *ngSwitchCase ="'textarea'">  
+      <textarea class="form-control" row="5"  [required]="question.isOptional" [formControlName]="question.fieldName"
+      [id]="question.fieldName" > </textarea>
+    </div>
+    <div *ngSwitchCase ="'checkbox'">  
+        
+      <input  class="form-check-input"  [formControlName]="question.fieldName"
+              [id]="question.fieldName" [required]="question.isOptional"  [type]="question.controlType">
+      </div>
+      <div *ngSwitchCase ="'radioArray'">  
+          
+          
+      <div  class="form-check form-check-inline" *ngFor="let radio of question.values;let index = index;">
+     
+      <label class="form-check-label" >
+        <input class="form-check-input" [required]="question.isOptional" type="radio"  [formControlName]="radio.name"  [value]="radio.value"> {{radio.value}}
+      </label>
+    </div>
+    </div>
+  
+    <div *ngSwitchCase ="'checkboxArray'"> 
+      
+      
+        <div class="form-check form-check-inline" *ngFor="let checkbox of question.values;let index = index">
+            <label class="form-check-label" [for]="checkbox.name">
+              <input class="form-check-input" [required]="question.isOptional" type="checkbox" [formControlName]="checkbox.name" [id]="checkbox.name" [value]="checkbox.value"> {{checkbox.value}}
+            </label>
+          </div>
+       
+        </div>
+
+<!--smiley Faces-->
+<div class="form-group" *ngSwitchCase ="'SmileyScale'"  id="smileys">  
+   
+    <div class="form-check form-check-inline" *ngFor="let smiley of question.values;let index = index">
+     
+        <label class="form-check-label" >
+            <input [ngClass]="smiley.value" [required]="question.isOptional" class="form-check-input" type="radio"  [formControlName]="question.fieldName"  [value]="smiley.value"><p>{{smiley.value}}</p> 
+          </label>
+          
+</div>
+  </div>
+
+  <!--star rating-->
+  
+  <div class="form-group" *ngSwitchCase ="'starScale'"  id="stars">  
+      <span class="rating">
+             <ng-container *ngFor="let stars of question.values;let index = index">
+       
+          <!--<label class="form-check-label" >
+              <input [ngClass]="stars.value" class="form-check-input" type="radio"  [formControlName]="question.fieldName"  [value]="stars.value"><p>{{stars.value}}</p> 
+            </label>-->
+            <input [ngClass]="stars.value" [required]="question.isOptional" id="star{{index}}" class="form-check-input" type="radio"  [formControlName]="question.fieldName"  [value]="stars.value">
+            
+            <label for="star{{index}}">{{stars.value}}</label>   
+          </ng-container></span>
+    </div>
+    <div class="form-group" *ngSwitchCase ="'thumbs'"  id="thumbs"> 
+        <div class="form-check form-check-inline" *ngFor="let thumbs of question.values;let index = index">
+     
+            <label class="form-check-label" >
+                <input [ngClass]="thumbs.value" [required]="question.isOptional" class="form-check-input" type="radio"  [formControlName]="question.fieldName"  [value]="thumbs.value"> 
+              </label>
+              
+    </div>
+
+      </div> 
+        </div>
+      
+      </div>
+ 
+  
+  

@@ -1,0 +1,43 @@
+<section >
+    <div class="container-fluid">
+       
+        <div class="row-fluid">
+            <div style="background: #f8f9fa;padding: 20px;border-radius: 10px;border: 1px solid #ebebe7;" class="col-md-6 ml-md-auto mr-md-auto ">
+               <h3 *ngIf="showForm" class="text-center title">{{title}}</h3>
+               
+    
+    <form *ngIf="showForm" (ngSubmit)="onSubmit()" [formGroup]="form">
+      
+        <mat-horizontal-stepper [linear]="isLinear">
+      
+          <mat-step *ngFor="let question of fields; let index = index; let last = last;">
+        <df-question [question]="question" [form]="form"></df-question>
+        <div class="w-100" style="padding-top:20px"></div>
+        <div class="btn-group mr-1">
+            <button  *ngIf="index !== 0" matStepperPrevious class="btn btn-primary" type="button" (click)="prevStep(index)">Back</button>
+            </div>
+          <div class="btn-group mr-1">
+            
+            <button  *ngIf="!last"    matStepperNext class="btn btn-primary"   type="button"  (click)="nextStep(index)">Next</button>
+               </div>
+            <div class="btn-group mr-1">
+              <button  *ngIf="last" class="btn btn-primary"  [disabled]="!form.valid" type="submit">Submit</button>
+              </div>
+      </mat-step>
+     
+    </mat-horizontal-stepper>
+    </form>
+    <div *ngIf="payLoad && !showForm" class="form-row" style="    word-break: break-all;">
+        <p>Thanks for your valuable Feedback</p>   
+             <p>
+             
+             <strong>Saved the following values</strong>
+             <br>
+             
+             {{payLoad}}</p>
+      </div>
+</div>
+</div>
+</div>
+
+</section>

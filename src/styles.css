@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+li.nav-item {
+    border-bottom: 1px solid #007bff;
+    margin-right: 10px;
+    /* border-radius: 10px; */
+    border-top: 1px solid #007bff;
+}

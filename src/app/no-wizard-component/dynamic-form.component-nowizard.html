@@ -1,0 +1,37 @@
+<section >
+        <div class="container-fluid">
+           
+            <div class="row-fluid">
+                <div  style="background: #f8f9fa;padding: 20px;border-radius: 10px;border: 1px solid #ebebe7;" class="col-md-6 ml-md-auto mr-md-auto ">
+                   <h3 *ngIf="showForm" class="text-center title">{{questions.form_header}}</h3>
+                   
+        
+        <form *ngIf="showForm" (ngSubmit)="onSubmit()" [formGroup]="formnowizard"  >
+          
+           
+          
+              <div *ngFor="let question of questions.fields; let index = index; let sno = index">
+            <df-question [question]="question" [form]="formnowizard" [index]="index + 1"></df-question>
+            </div>
+            <div class="w-100" style="padding-top:20px"></div>
+       
+            <div class="btn-group mr-1">
+              <button  class="btn btn-primary"  [disabled]="!formnowizard.valid" type="submit">Submit</button>
+              </div>
+    
+        </form>
+        <div *ngIf="payLoad && !showForm" class="form-row" style="    word-break: break-all;">
+             <p>Thanks for your valuable Feedback</p>   
+             <p>
+             
+             <strong>Saved the following values</strong>
+             <br>
+             
+             {{payLoad}}</p>
+          </div>
+    </div>
+    </div>
+    </div>
+    
+    </section>
+    

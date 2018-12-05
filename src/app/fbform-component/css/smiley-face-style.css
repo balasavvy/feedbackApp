@@ -1,0 +1,37 @@
+
+#smileys input[type="radio"] {
+    -webkit-appearance: none;
+    width: 30px;
+    height:30px;
+    border: none;
+    cursor: pointer;
+    transition: border 0.2s ease;
+    filter: grayscale(100%);
+    margin: 0 5px;
+    transition: all 0.2s ease;
+  }
+  #smileys input[type="radio"]:hover, #smileys input[type="radio"]:checked {
+    filter: grayscale(0);
+  }
+  #smileys input[type="radio"]:focus {
+    outline: 0;
+  }
+  #smileys input[type="radio"][class*="good"]{
+    background: url('../images/happy_ampvnc.svg') center;
+    background-size: cover;
+  }
+  #smileys input[type="radio"][class*="average"] {
+    background: url('../images/neutral_t3q8hz.svg') center;
+    background-size: cover;
+  }
+  #smileys input[type="radio"][class*="sad"]{
+    background: url('../images/sad_bj1tuj.svg') center;
+    background-size: cover;
+  }
+  #smileys{
+  align-items: center;
+  display: flex;
+  font-family: Helvetica, sans-serif;  
+/*justify-content: center;*/
+  margin: 0;text-align: center;
+}
